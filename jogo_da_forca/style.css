@@ -1,0 +1,140 @@
+body{
+    background-image:url("img/fundo2.jpg");
+    background-attachment:fixed;
+    background-position:center;
+    background-size:cover;
+}
+
+main{
+ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ color:white;
+}
+
+main h1{
+    font-size:70px;
+}
+
+main h2{
+    font-size:50px;
+}
+
+.tela_inicial{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   flex-direction:column;
+}
+
+#btn_iniciar{
+width:200px;
+height:180px;
+font-size:90px;
+border-radius:30px;
+border:solid white 2px;
+background:rgba(0, 79, 143, 0.738);
+color:rgb(255, 255, 255);
+}
+
+#btn_iniciar:hover{
+font-size:82px;
+}
+
+#palavra1,#palavra2{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-flow:row wrap;
+}
+
+#tela_forca{
+margin-bottom:210px;
+}
+
+.card_ativo{
+    background:rgb(0, 35, 132);
+    color:white;
+    width:80px;
+    height:93px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:20px 8px 10px 8px;
+    font-size:70px;
+    border-radius:20px;
+}
+
+.card_ativo:hover{
+    font-size:60px;
+}
+
+.teclado{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-flow:row wrap;
+    width:70%;
+}
+
+.tecla,.tecla_inativa{
+    background:#ffffff;
+    width:63px;
+    height:55px;
+    margin: 0px 6px 10px 8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    border-radius:15px;
+    font-family:monospace;
+    color:rgb(0, 0, 0);
+    border:none;
+}
+
+.tecla_inativa{
+    background:rgba(230, 230, 230, 0.614)!important;
+    color:rgba(44, 44, 44, 0.442)!important;
+}
+
+.tecla:hover{
+    font-size:34px;
+}
+
+header{
+    display:none;
+    align-items:center;
+    justify-content:end;
+    margin:25px 15px 0px 0px; 
+}
+
+header i{
+    font-size:30px;
+    margin: 0px 10px 0px 0px;
+    color:rgb(200, 0, 255);
+}
+
+#borda{
+    height:20px;
+    display:grid;
+    grid-template-columns:repeat(3,33.3%);
+    border:solid white 3px;
+    min-width:11%;
+    background:rgb(173, 173, 173);
+}
+
+#barra_vida{
+    background:rgb(0, 123, 255);
+    min-height:100%;
+    min-width:100%;
+}
+
+#tela_erro{
+    font-size:20px;
+    min-height:50px;
+}
+
+   
+

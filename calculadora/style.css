@@ -1,0 +1,91 @@
+body {
+    background: rgb(19, 19, 19);
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main h2{
+    color:white;
+}
+
+.calculadora {
+    background: black;
+    border: solid rgb(154, 154, 154) 1px;
+    width: 19%;
+    height: 50vh;
+    margin-top:50px;
+}
+
+.digito,.operacao{
+    background: rgb(43, 43, 43);
+    width: 48px;
+    height: 48px;
+    border-radius: 70px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.digito:hover,.operacao:hover{
+ background:rgb(61, 61, 61);
+}
+
+.operacao{
+    color:rgb(69, 223, 49);
+}
+
+.teclado {
+    display: grid;
+    grid-gap:10px;
+    grid-template-columns: repeat(4, 20%);
+    align-items:center;
+    justify-content:center;
+}
+
+#tela {
+    height: 30px;
+    padding:10px;
+    font-size:25px;
+    border-bottom:groove rgb(87, 87, 87);
+    margin:0px 7px 20px 7px;
+    color:white;
+    display:flex;
+    justify-content:end;
+    align-items:center;
+    overflow:hidden;
+}
+
+#zerar {
+    color: rgb(255, 77, 77);
+}
+
+#igual{
+  background:rgb(38, 141, 24);
+}
+
+#igual:hover{
+    background:rgb(45, 168, 29);
+}
+
+
+@media screen and (max-width:767px){
+.calculadora{
+    width:75%;
+    height:400px;
+}
+}
+
+@media screen and (max-width:1100px) and (min-width:768px) {
+    .calculadora{
+        width:40%;
+        height:400px;
+    }
+}
