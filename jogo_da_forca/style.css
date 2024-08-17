@@ -25,8 +25,18 @@ main h2{
 .tela_inicial{
    display:flex;
    align-items:center;
-   justify-content:center;
-   flex-direction:column;
+   flex-direction:row;
+}
+
+.tela_inicial article{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    justify-content:center;
+}
+
+main ul{
+ list-style:none;
 }
 
 #btn_iniciar{

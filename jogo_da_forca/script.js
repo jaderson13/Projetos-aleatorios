@@ -23,8 +23,8 @@ function Ler_dados() {
       palavra = vet_palavras[i];
 
       for (let j = 0; j < palavra.length; j++) {
-        numero = (Math.floor(Math.random() * 100))+j;
-        tecla_ativa = numero > 23 && numero < 40 ? true : false;
+        numero = (Math.floor(Math.random() * 100)) - j;
+        tecla_ativa = numero > 21 && numero < 40 ? true : false;
 
         obj_letra = {
           id: palavra[j].toUpperCase(),
@@ -85,21 +85,20 @@ function Carregar_jogo(letra_escolhida) {
   }
 
   if (letra_correta || inicio) {
-    console.log("achoy");
     teclado.innerHTML = ``;
     let obj_dados = Ler_dados();
     inicio = false;
 
     for (let i = 65; i < 91; i++) {
 
-      if (!obj_dados.vet_teclas[i-65].ativa || obj_dados.vet_teclas[i-65].id == letra_escolhida) {
-        obj_dados.vet_teclas[i-65].ativa = false;
+      if (!obj_dados.vet_teclas[i - 65].ativa || obj_dados.vet_teclas[i - 65].id == letra_escolhida) {
+        obj_dados.vet_teclas[i - 65].ativa = false;
         classe = "tecla_inativa";
       }
 
       else { classe = "tecla"; }
 
-      teclado.innerHTML += `<button id="bt-${i}" class="${classe}">${obj_dados.vet_teclas[i-65].id}</button> `;
+      teclado.innerHTML += `<button id="bt-${i}" class="${classe}">${obj_dados.vet_teclas[i - 65].id}</button> `;
 
     }
 
@@ -126,7 +125,7 @@ function Carregar_jogo(letra_escolhida) {
     Inicializar_botoes();
   }
 
-  else {
+  else if (letra_escolhida != -1) {
     vidas--;
     Carregar_barra_vida()
   }
@@ -135,13 +134,15 @@ function Carregar_jogo(letra_escolhida) {
 
 function Carregar_barra_vida() {
 
-  document.querySelector(`#borda div:nth-child(${3-vidas})`).style.display="none";
-  document.querySelector("#tela_erro").innerHTML=`Letra errada, vidas restantes ${vidas}`;
+  document.querySelector(`#borda div:nth-child(${3 - vidas})`).style.display = "none";
+  document.querySelector("#tela_erro").innerHTML = `Letra errada, vidas restantes ${vidas}`;
 
-  if(vidas<=0){
-    document.querySelector("#palavra1").innerHTML="",  document.querySelector("#palavra2").innerHTML="";
-    document.querySelector(".teclado").innerHTML="",document.querySelector(".tela_inicial").style.display="flex";
-    document.querySelector("#tela_erro").style.display="none";
+  if (vidas <= 0) {
+    document.querySelector("#palavra1").innerHTML = "", document.querySelector("#palavra2").innerHTML = "";
+    document.querySelector(".teclado").innerHTML = "", document.querySelector(".tela_inicial").style.display = "flex";
+    document.querySelector("#tela_erro").innerHTML = ""; document.querySelector(".tela_inicial h1").innerHTML = "Você perdeu!";
+    document.querySelector(".tela_inicial h2").innerHTML = "Recomeçar";
+    document.querySelector("#btn_iniciar").onclick = () => location.reload();
   }
 }
 
@@ -150,8 +151,8 @@ function Inicializar_botoes() {
 
   for (let i = 65; i < 91; i++) {
 
-    if (!obj_dados.vet_teclas[i-65].ativa) {
-      document.querySelector(`#bt-${i}`).onclick = () => function(botao){botao.prevaultDefault();}
+    if (!obj_dados.vet_teclas[i - 65].ativa) {
+      document.querySelector(`#bt-${i}`).onclick = () => function (botao) { botao.prevaultDefault(); }
     }
     else {
       document.querySelector(`#bt-${i}`).onclick = () => Carregar_jogo(obj_dados.vet_teclas[i - 65].id);

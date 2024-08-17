@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo da forca</title>
   <link rel="stylesheet" href="style.css">
+  
 </head>
 
 <body>
 
   <header>
-    <i class="fa-solid fa-heart"></i>
+    <i class="fa-solid fa-heart" title="vida"></i>
     <section id="borda">
       <div id="barra_vida"></div>
       <div id="barra_vida"></div>
@@ -21,9 +22,22 @@
   <main>
 
     <section class="tela_inicial">
-      <h1>Jogo da forca</h1>
-      <h2>Iniciar</h2>
-      <button id="btn_iniciar"><i class="fa-solid fa-play"></i></button>
+      <article>
+        <h1>Jogo da forca</h1>
+        <h2>Iniciar</h2>
+        <button id="btn_iniciar"><i class="fa-solid fa-play"></i></button>
+      </article>
+
+      <article class="temas">
+        <h2>Escolha um tema</h2>
+        <ul>
+          <li><button id="btn">Comida</button></li>
+          <li><button>Carros</button></li>
+          <li><button>Jogos</button></li>
+          <li><button>Marcas</button></li>
+        </ul>
+      </article>
+      
     </section>
 
     <section id="tela_forca">
@@ -40,7 +54,6 @@
 
   <script src="script.js"></script>
   <script src="https://kit.fontawesome.com/4dc726c735.js" crossorigin="anonymous"></script>
-
 </body>
 
 </html>
