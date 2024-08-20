@@ -60,7 +60,7 @@ function Ler_dados(vet_palavras) {
       for (let j = 0; j < palavra.length; j++) {
         numero = (Math.floor(Math.random() * 100)) - j;
 
-        if (cont_letra <= 2) { tecla_ativa = numero > 30 && numero < 80 ? true : false; }
+        if (cont_letra <= 2) { tecla_ativa = numero > 50 && numero < 80 ? true : false; }
         else {tecla_ativa=false;}
 
         if (tecla_ativa) { cont_letra++; }
