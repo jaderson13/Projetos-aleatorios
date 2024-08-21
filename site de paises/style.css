@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px 20px 40px;
+    box-shadow: 5px 10px 8px rgb(244, 244, 244);
+    margin-bottom: 2px;
+}
+
+main {
+    padding: 40px;
+    box-sizing: border-box;
+    background: rgba(245, 245, 245, 0.413);
+}
+
+header h3 {
+    font-size: 21px;
+}
+
+.modo_tema {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 200px;
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: black;
+}
+
+
+.modo_tema i {
+    margin-right: 6px;
+    font-size: 20px;
+}
+
+.barra_pesquisa {
+    display: inline-grid;
+    justify-content: start;
+    align-items: center;
+}
+
+.barra_pesquisa i {
+    color: rgb(170, 170, 170);
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 16px;
+}
+
+#campo_pesquisa {
+    padding: 15px;
+    padding-left: 50px;
+    width: 300px;
+    box-shadow: -1px 2px 8px gainsboro;
+    border: none;
+    grid-column: 2/5;
+    grid-row: 1;
+    background: none;
+    outline: 0;
+}
+
+#campo_pesquisa:hover {
+    box-shadow: -1px 3px 8px rgb(201, 201, 201);
+}
+
+.secao_cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin-top: 70px;
+}
+
+main form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_pais {
+    height: 300px;
+    width: 250px;
+    background: white;
+    box-shadow: -1px 10px 8px rgb(236, 236, 236);
+}
+
+.card_pais img {
+    width: 100%;
+}
+
+.card_pais article {
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.card_pais h3 {
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+.card_pais h4 {
+    font-weight: 400;
+}
+
+#regioes {
+    border: none;
+    outline: 0;
+    padding: 17px;
+    background: none;
+    font-weight: 600;
+}
+
+#regioes option {
+    font-weight: 600;
+}
+
+#regioes option:hover {
+    box-shadow: 0 0 10px 100px #000 inset;
+}
+
+.filtro_pesquisa {
+    padding-right: 10px;
+    background: white;
+    box-shadow: 1px 1px 8px gainsboro;
+}
+
+.filtro_pesquisa:hover {
+    box-shadow: 1px 3px 8px rgb(201, 201, 201);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-background-color: transparent;
+    transition: background-color 5000s ease-in-out 0s;
+}
+

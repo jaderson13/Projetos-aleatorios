@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Países</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h3>Informações sobre países</h3>
+        <a href="#" class="modo_tema">
+            <i class="fa-regular fa-moon"></i>
+            <h4>Modo Escuro</h4>
+        </a>
+    </header>
+
+    <main>
+        <form>
+            <section class="barra_pesquisa">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="campo_pesquisa" type="text" placeholder="Pesquise o nome de algum país">
+            </section>
+
+            <section class="filtro_pesquisa">
+                <select id="regioes">
+                    <option hidden disabled selected>Filtre pela região</option>
+                    <option value="africa">África</option>
+                    <option value="america">América</option>
+                    <option value="asia">Ásia</option>
+                    <option value="europa">Europa</option>
+                    <option value="oceania">Oceania</option>
+                </select>
+            </section>
+        </form>
+
+        <section class="secao_cards">
+            <div class="card_pais">
+                <img alt="bandeira" src="usa.png">
+                <article>
+                    <h3>Pais</h3>
+                    <h4><b>População:</b> 500</h4>
+                    <h4><b>Região: </b>America</h4>
+                    <h4><b>Capital: </b>Washington</h4>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/4dc726c735.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
