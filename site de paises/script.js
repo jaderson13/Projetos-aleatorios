@@ -1,8 +1,8 @@
 document.querySelector(".modo_tema").onclick = () => Alternar_tema();
 
 function Alternar_tema() {
-    let str_dados = localStorage.getItem('tema_cor');
-    let tema_cor = {};
+    let str_dados = localStorage.getItem("tema_cor");
+    let tema_cor;
 
     let header = document.querySelector("header");
     let main = document.querySelector("main");
@@ -15,7 +15,7 @@ function Alternar_tema() {
     let filtro_cor = document.querySelector("#regioes");
 
     if (str_dados) {
-        tema_cor = str_dados;
+        tema_cor = JSON.parse(str_dados);
     }
 
     else {
@@ -23,20 +23,22 @@ function Alternar_tema() {
     }
 
     if (tema_cor.cor == 0) {
-        header.style.background = "rgb(32, 32, 32)";
-        main.style.background = "rgb(30, 30, 30)";
-        header.style.margin = "0";
-        filtro_pesquisa.style.background = "none";
+        header.style.background = "rgb(35, 35, 35)";
+        main.style.background = "rgb(27, 27, 27)";
+        filtro_pesquisa.style.background = "rgb(43, 43, 43)";
+        filtro_cor.style.background = "rgb(43, 43, 43)";
+        card.style.background = "rgb(43, 43, 43)";
+        card.style.boxShadow = "none";
         filtro_pesquisa.style.boxShadow = "none";
         campo_pesquisa.style.boxShadow = "none";
+        barra_pesquisa.style.background = "rgb(43, 43, 43)";
         header.style.boxShadow = "none";
         html.style.color = "white";
         botao_tema.style.color = "white";
         filtro_cor.style.color = "white";
         campo_pesquisa.style.color = "white";
-        barra_pesquisa.style.border = "solid whitesmoke 1.5px";
-        card.style.border = "solid whitesmoke 1.5px";
         tema_cor.cor = 1;
+        header.style.margin = "0";
     }
 
     else {
@@ -48,7 +50,7 @@ function Alternar_tema() {
         tema_cor.cor = 0;
     }
 
-    console.log(tema_cor.cor);
+    console.log(tema_cor);
 
     localStorage.setItem('tema_cor', JSON.stringify(tema_cor));
 
