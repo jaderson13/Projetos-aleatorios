@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing:border-box;
 }
 
 body {
@@ -11,7 +12,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 66px 20px 58px;
     box-shadow: 5px 10px 8px rgb(244, 244, 244);
     margin-bottom: 2px;
 }
@@ -19,7 +20,8 @@ header {
 main {
     padding: 40px;
     box-sizing: border-box;
-    background: rgba(245, 245, 245, 0.413);
+    background: rgba(220, 220, 220, 0.209);
+    min-height:97vh;
 }
 
 header h3 {
@@ -29,12 +31,14 @@ header h3 {
 .modo_tema {
     display: flex;
     align-items: center;
+    justify-content:end;
     flex-direction: row;
     width: 200px;
     background: none;
     border: none;
     text-decoration: none;
     color: black;
+    margin-left:90px;
 }
 
 
@@ -47,31 +51,43 @@ header h3 {
     display: inline-grid;
     justify-content: start;
     align-items: center;
-    background:white;
+    background:none;
 }
 
-.barra_pesquisa i {
+.barra_pesquisa i:first-of-type {
     color: rgb(170, 170, 170);
     grid-column: 2;
     grid-row: 1;
     margin-left: 16px;
+    z-index:1;
+}
+
+.barra_pesquisa i:last-of-type{
+    grid-column:4;
+    grid-row:1;
+    margin-right:10px;
+    visibility:hidden;
+}
+
+#btn_pesquisa{
+    padding:5px;
+    border-color:rgb(70, 70, 70);
+    margin-top:5px;
+    grid-row:2;
+    grid-column:1;
+    width:20%;
 }
 
 #campo_pesquisa {
     padding: 15px;
     padding-left: 50px;
-    width: 300px;
-    box-shadow: -1px 2px 8px gainsboro;
     border: none;
     grid-column: 2/5;
     grid-row: 1;
-    background: none;
     outline: 0;
+    width:400px;
 }
 
-#campo_pesquisa:hover {
-    box-shadow: -1px 3px 8px rgb(201, 201, 201);
-}
 
 .secao_cards {
     display: flex;
@@ -82,9 +98,9 @@ header h3 {
 }
 
 main form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns:repeat(2,40%);
+    padding:0px 0px 0px 20px;
 }
 
 .card_pais {
@@ -92,10 +108,12 @@ main form {
     width: 250px;
     background: white;
     box-shadow: -1px 10px 8px rgb(236, 236, 236);
+    margin:20px;
 }
 
 .card_pais img {
-    width: 100%;
+    width:100%;
+    height:130px;
 }
 
 .card_pais article {
@@ -118,25 +136,16 @@ main form {
     padding: 17px;
     background: none;
     font-weight: 600;
+    box-shadow: 1px 1px 8px gainsboro;
+    grid-column:5/7;
+    width:80%;
+    margin-left:23px;
 }
 
 #regioes option {
     font-weight: 600;
 }
 
-#regioes option:hover {
-    box-shadow: 0 0 10px 100px #000 inset;
-}
-
-.filtro_pesquisa {
-    padding-right: 10px;
-    background: white;
-    box-shadow: 1px 1px 8px gainsboro;
-}
-
-.filtro_pesquisa:hover {
-    box-shadow: 1px 3px 8px rgb(201, 201, 201);
-}
 
 input:-webkit-autofill:focus {
     -webkit-background-color: transparent;
