@@ -88,6 +88,9 @@ header h3 {
     width:400px;
 }
 
+#regioes,#campo_pesquisa{
+    border-radius:7px;
+}
 
 .secao_cards {
     display: flex;
@@ -133,17 +136,26 @@ main form {
 #regioes {
     border: none;
     outline: 0;
-    padding: 17px;
     background: none;
     font-weight: 600;
+    padding:9px;
+    width:50%;
+    height:33px;
     box-shadow: 1px 1px 8px gainsboro;
-    grid-column:5/7;
-    width:80%;
-    margin-left:23px;
 }
 
 #regioes option {
     font-weight: 600;
+}
+
+.filtro_regioes{
+    grid-column:7;
+    display:flex;
+    align-items:center;
+}
+
+.filtro_regioes h4{
+    width:130px;
 }
 
 

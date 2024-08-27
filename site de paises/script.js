@@ -7,8 +7,18 @@ var inicio = true;
 var btn_limpar = document.querySelector(".barra_pesquisa i:last-of-type");
 
 document.querySelector(".modo_tema").onclick = () => Alternar_tema();
-document.querySelector("#btn_pesquisa").onclick = () => Carregar_conteudo(true);
 document.querySelector("#btn_limpar").onclick = () => Limpar_resultado();
+
+document.querySelector("#regioes").onchange = () => {
+    if (document.querySelector("#regioes").value == "0") {Carregar_conteudo(false); }
+    else {Carregar_conteudo(true); }
+}
+
+document.querySelector("#btn_pesquisa").onclick = () => {
+    let pesquisa = document.querySelector("#campo_pesquisa").value;
+    if (pesquisa == "") { alert("Não deixe o campo em branco!");  filtro = false;}
+    else{ Carregar_conteudo(true);}
+ }
 
 function Carregar_conteudo(filtro) {
 
@@ -18,13 +28,19 @@ function Carregar_conteudo(filtro) {
             vet_paises = dados;
 
             let pesquisa = document.querySelector("#campo_pesquisa").value.toUpperCase();
+            let filtro_regiao = document.querySelector("#regioes").value.toUpperCase();
             let str_html = "";
             let achar = false;
-            let pais;
+            let pais, regiao;
+
+            console.log(filtro_regiao+" "+filtro);
 
             for (let i = 0; i < vet_paises.length; i++) {
                 pais = vet_paises[i].name.common.toUpperCase();
-                if (!filtro || pesquisa == pais || pais.indexOf(pesquisa)!=-1) {
+                regiao = vet_paises[i].region.toUpperCase();
+
+                if (!filtro || filtro_regiao == regiao || pesquisa == pais || pais.indexOf(pesquisa) != -1) {
+                    console.log("alouwe");
                     achar = true;
                     str_html +=
                         `
@@ -33,7 +49,7 @@ function Carregar_conteudo(filtro) {
                         <article>
                             <h3>${vet_paises[i].name.common}</h3>
                             <h4><b>População:</b> ${vet_paises[i].population}</h4>
-                            <h4><b>Região: </b>${vet_paises[i].subregion}</h4>
+                            <h4><b>Região: </b>${vet_paises[i].region}</h4>
                             <h4><b>Capital: </b>${vet_paises[i].capital}</h4>
                         </article>
                     </div>
@@ -44,21 +60,19 @@ function Carregar_conteudo(filtro) {
             if (!achar) {
                 str_html =
                     `
-        <div class="card_pais">       
+            <div class="card_pais">       
                 <article>
                     <h4><b>Nenhum resultado encontrado</b></h4>
                 </article>
             </div>
         `;
             }
-
+            
+            document.querySelector(".secao_cards").innerHTMl = "";
             document.querySelector(".secao_cards").innerHTML = str_html;
-            if (!filtro) {
-                btn_limpar.style.visibility = "hidden";
-            }
-            else {
-                btn_limpar.style.visibility = "unset";
-            }
+
+            if (pesquisa=="") { btn_limpar.style.visibility = "hidden"; }
+            else { btn_limpar.style.visibility = "unset"; }
 
             Alternar_tema(true);
 
@@ -66,8 +80,8 @@ function Carregar_conteudo(filtro) {
 }
 
 function Limpar_resultado() {
-    Carregar_conteudo(false);
     document.querySelector("#campo_pesquisa").value = "";
+    Carregar_conteudo(false);
 }
 
 function Alternar_tema(pesquisa) {
