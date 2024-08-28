@@ -1,5 +1,5 @@
 onload = () => {
-    Carregar_conteudo(false);
+    Carregar_conteudo(false, false);
     Alternar_tema();
 }
 
@@ -10,15 +10,15 @@ document.querySelector(".modo_tema").onclick = () => Alternar_tema();
 document.querySelector("#btn_limpar").onclick = () => Limpar_resultado();
 
 document.querySelector("#regioes").onchange = () => {
-    if (document.querySelector("#regioes").value == "0") {Carregar_conteudo(false); }
-    else {Carregar_conteudo(true); }
+    if (document.querySelector("#regioes").value == "0") { Carregar_conteudo(false); }
+    else { Carregar_conteudo(true); }
 }
 
 document.querySelector("#btn_pesquisa").onclick = () => {
     let pesquisa = document.querySelector("#campo_pesquisa").value;
-    if (pesquisa == "") { alert("Não deixe o campo em branco!");  filtro = false;}
-    else{ Carregar_conteudo(true);}
- }
+    if (pesquisa == "") { alert("Não deixe o campo em branco!"); }
+    else { Carregar_conteudo(true); }
+}
 
 function Carregar_conteudo(filtro) {
 
@@ -26,34 +26,35 @@ function Carregar_conteudo(filtro) {
         .then(dados => dados.json())
         .then(dados => {
             vet_paises = dados;
-
             let pesquisa = document.querySelector("#campo_pesquisa").value.toUpperCase();
             let filtro_regiao = document.querySelector("#regioes").value.toUpperCase();
             let str_html = "";
             let achar = false;
             let pais, regiao;
 
-            console.log(filtro_regiao+" "+filtro);
-
             for (let i = 0; i < vet_paises.length; i++) {
                 pais = vet_paises[i].name.common.toUpperCase();
                 regiao = vet_paises[i].region.toUpperCase();
 
-                if (!filtro || filtro_regiao == regiao || pesquisa == pais || pais.indexOf(pesquisa) != -1) {
-                    console.log("alouwe");
-                    achar = true;
-                    str_html +=
-                        `
-                <div class="card_pais">
-                        <img alt="bandeira" src="${vet_paises[i].flags.png}">
-                        <article>
-                            <h3>${vet_paises[i].name.common}</h3>
-                            <h4><b>População:</b> ${vet_paises[i].population}</h4>
-                            <h4><b>Região: </b>${vet_paises[i].region}</h4>
-                            <h4><b>Capital: </b>${vet_paises[i].capital}</h4>
-                        </article>
-                    </div>
-                `;
+                if (!filtro || filtro_regiao == regiao || pesquisa != "" || pesquisa == pais || pesquisa.indexOf(pesquisa) != -1) {
+
+                   
+
+                        achar = true;
+                        str_html +=
+                            `
+                        <div class="card_pais">
+                                <img alt="bandeira" src="${vet_paises[i].flags.png}">
+                                <article>
+                                    <h3>${vet_paises[i].name.common}</h3>
+                                    <h4><b>População:</b> ${vet_paises[i].population}</h4>
+                                    <h4><b>Região: </b>${vet_paises[i].region}</h4>
+                                    <h4><b>Capital: </b>${vet_paises[i].capital}</h4>
+                                </article>
+                            </div>
+                        `;
+
+                    
                 }
             }
 
@@ -67,11 +68,11 @@ function Carregar_conteudo(filtro) {
             </div>
         `;
             }
-            
+
             document.querySelector(".secao_cards").innerHTMl = "";
             document.querySelector(".secao_cards").innerHTML = str_html;
 
-            if (pesquisa=="") { btn_limpar.style.visibility = "hidden"; }
+            if (pesquisa == "") { btn_limpar.style.visibility = "hidden"; }
             else { btn_limpar.style.visibility = "unset"; }
 
             Alternar_tema(true);
