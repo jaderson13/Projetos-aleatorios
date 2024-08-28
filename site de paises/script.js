@@ -5,56 +5,62 @@ onload = () => {
 
 var inicio = true;
 var btn_limpar = document.querySelector(".barra_pesquisa i:last-of-type");
+var select, input;
 
 document.querySelector(".modo_tema").onclick = () => Alternar_tema();
 document.querySelector("#btn_limpar").onclick = () => Limpar_resultado();
 
 document.querySelector("#regioes").onchange = () => {
-    if (document.querySelector("#regioes").value == "0") { Carregar_conteudo(false); }
-    else { Carregar_conteudo(true); }
+    if (document.querySelector("#regioes").value == "0") { Carregar_conteudo(false, input); }
+    else { Carregar_conteudo(true, input); }
 }
 
 document.querySelector("#btn_pesquisa").onclick = () => {
     let pesquisa = document.querySelector("#campo_pesquisa").value;
-    if (pesquisa == "") { alert("Não deixe o campo em branco!"); }
-    else { Carregar_conteudo(true); }
+    if (pesquisa == "") { alert("Não deixe o campo em branco!"); filtro = false; }
+    else { Carregar_conteudo(select, true); }
 }
 
-function Carregar_conteudo(filtro) {
+function Carregar_conteudo(filtro, campo) {
 
     fetch('https://restcountries.com/v3.1/all')
         .then(dados => dados.json())
         .then(dados => {
             vet_paises = dados;
+
             let pesquisa = document.querySelector("#campo_pesquisa").value.toUpperCase();
             let filtro_regiao = document.querySelector("#regioes").value.toUpperCase();
             let str_html = "";
-            let achar = false;
+            let achar;
             let pais, regiao;
+            select = filtro;
+            input = campo;
+
+            console.log(select+" "+input);
 
             for (let i = 0; i < vet_paises.length; i++) {
                 pais = vet_paises[i].name.common.toUpperCase();
                 regiao = vet_paises[i].region.toUpperCase();
+                achar = false;        
 
-                if (!filtro || filtro_regiao == regiao || pesquisa != "" || pesquisa == pais || pesquisa.indexOf(pesquisa) != -1) {
+                if(!select && !input){achar = true; console.log("cl0");}
+                else if (filtro_regiao == regiao && (pesquisa == pais || pais.indexOf(pesquisa) != -1)) { achar = true; console.log("cl1"); }
+                else if (filtro_regiao == regiao) { achar = true; console.log("cl2"); }
+                else if (pesquisa != "" && (pesquisa == pais || pais.indexOf(pesquisa) != -1)) { achar = true; console.log("cl3"); }
 
-                   
-
-                        achar = true;
-                        str_html +=
-                            `
-                        <div class="card_pais">
-                                <img alt="bandeira" src="${vet_paises[i].flags.png}">
-                                <article>
-                                    <h3>${vet_paises[i].name.common}</h3>
-                                    <h4><b>População:</b> ${vet_paises[i].population}</h4>
-                                    <h4><b>Região: </b>${vet_paises[i].region}</h4>
-                                    <h4><b>Capital: </b>${vet_paises[i].capital}</h4>
-                                </article>
-                            </div>
-                        `;
-
-                    
+                if (achar) {
+                    str_html +=
+                        `
+                <div class="card_pais">
+                        <img alt="bandeira" src="${vet_paises[i].flags.png}">
+                        <article>
+                            <h3>${vet_paises[i].name.common}</h3>
+                            <h4><b>População:</b> ${vet_paises[i].population}</h4>
+                            <h4><b>Região: </b>${vet_paises[i].region}</h4>
+                            <h4><b>Capital: </b>${vet_paises[i].capital}</h4>
+                        </article>
+                    </div>
+                `;
                 }
             }
 
@@ -82,7 +88,7 @@ function Carregar_conteudo(filtro) {
 
 function Limpar_resultado() {
     document.querySelector("#campo_pesquisa").value = "";
-    Carregar_conteudo(false);
+    Carregar_conteudo(select, false);
 }
 
 function Alternar_tema(pesquisa) {
@@ -139,7 +145,6 @@ function Alternar_tema(pesquisa) {
             vet_cards[i].style.background = "rgb(47, 47, 47)";
             vet_cards[i].style.boxShadow = "none";
         }
-
     }
 
     else {
@@ -173,7 +178,6 @@ function Alternar_tema(pesquisa) {
             vet_cards[i].style.border = "none";
         }
     }
-
 
     localStorage.setItem('tema_cor', JSON.stringify(tema_cor));
     inicio = false;
