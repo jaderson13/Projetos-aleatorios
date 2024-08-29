@@ -36,31 +36,36 @@ function Carregar_conteudo(filtro, campo) {
             select = filtro;
             input = campo;
 
-            console.log(select+" "+input);
+            console.log(select + " " + input);
 
             for (let i = 0; i < vet_paises.length; i++) {
                 pais = vet_paises[i].name.common.toUpperCase();
                 regiao = vet_paises[i].region.toUpperCase();
-                achar = false;        
 
-                if(!select && !input){achar = true; console.log("cl0");}
-                else if (filtro_regiao == regiao && (pesquisa == pais || pais.indexOf(pesquisa) != -1)) { achar = true; console.log("cl1"); }
-                else if (filtro_regiao == regiao) { achar = true; console.log("cl2"); }
-                else if (pesquisa != "" && (pesquisa == pais || pais.indexOf(pesquisa) != -1)) { achar = true; console.log("cl3"); }
+                if ((!select || !input) || (select || input)) {
 
-                if (achar) {
-                    str_html +=
-                        `
-                <div class="card_pais">
-                        <img alt="bandeira" src="${vet_paises[i].flags.png}">
-                        <article>
-                            <h3>${vet_paises[i].name.common}</h3>
-                            <h4><b>População:</b> ${vet_paises[i].population}</h4>
-                            <h4><b>Região: </b>${vet_paises[i].region}</h4>
-                            <h4><b>Capital: </b>${vet_paises[i].capital}</h4>
-                        </article>
-                    </div>
-                `;
+                    if (!select || filtro_regiao == regiao) {
+ 
+                        if (!input || (pesquisa != "" && (pesquisa == pais || pais.indexOf(pesquisa) != -1))) {
+
+                            if ((!select || !input) || (filtro_regiao == regiao && (pesquisa != "" && (pesquisa == pais || pais.indexOf(pesquisa) != -1)))) {
+
+                                achar = true;
+                                str_html +=
+                                    `
+                                <div class="card_pais">
+                                        <img alt="bandeira" src="${vet_paises[i].flags.png}">
+                                        <article>
+                                            <h3>${vet_paises[i].name.common}</h3>
+                                            <h4><b>População:</b> ${vet_paises[i].population}</h4>
+                                            <h4><b>Região: </b>${vet_paises[i].region}</h4>
+                                            <h4><b>Capital: </b>${vet_paises[i].capital}</h4>
+                                        </article>
+                                    </div>
+                                `;
+                            }
+                        }
+                    }
                 }
             }
 

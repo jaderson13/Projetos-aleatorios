@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Países</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h3>Informações sobre países</h3>
+        <a href="#" class="modo_tema">
+            <i class="fa-regular fa-moon"></i>
+            <h4>Modo Escuro</h4>
+        </a>
+    </header>
+
+    <main>
+        <form>
+            <section class="barra_pesquisa">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="campo_pesquisa" type="text" placeholder="Pesquise o nome de algum país">
+                <i id="btn_limpar" class="fa-solid fa-xmark"></i>
+            </section>
+
+            <button id="btn_pesquisa">Pesquisar</button>
+       
+            <section class="filtro_regioes">
+                <h4>Filtre pela região: </h4>
+                <select id="regioes"> 
+                    <option value="0">Aleatório</option>
+                    <option value="africa">África</option>
+                    <option value="americas">América</option>
+                    <option value="asia">Ásia</option>
+                    <option value="europe">Europa</option>
+                    <option value="oceania">Oceania</option>
+                    <option value="antarctic">Antártica</option>
+                </select>
+            </section>
+        </form>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/4dc726c735.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
