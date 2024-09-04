@@ -19,35 +19,29 @@
     </header>
 
     <main>
-        <form>
-            <section class="barra_pesquisa">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input id="campo_pesquisa" type="text" placeholder="Pesquise o nome de algum país">
-                <i id="btn_limpar" class="fa-solid fa-xmark"></i>
-            </section>
-
-            <button id="btn_pesquisa">Pesquisar</button>
-       
-            <section class="filtro_regioes">
-                <h4>Filtre pela região: </h4>
-                <select id="regioes"> 
-                    <option value="0">Aleatório</option>
-                    <option value="africa">África</option>
-                    <option value="americas">América</option>
-                    <option value="asia">Ásia</option>
-                    <option value="europe">Europa</option>
-                    <option value="oceania">Oceania</option>
-                    <option value="antarctic">Antártica</option>
-                </select>
-            </section>
-        </form>
-
 
     </main>
 
 
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/4dc726c735.js" crossorigin="anonymous"></script>
+
+    <script>
+        onload = () =>{
+            Ler_dados(Carregar_pais);
+        }
+
+        function Carregar_pais(){
+            let parametros = new URLSearchParams(location.search);
+            let index = parametros.get("id");
+
+            document.querySelector("main").innerHTML=
+            `
+            <img src="${vet_paises[index].flags.png}">
+            `;
+        }
+
+    </script>
 </body>
 
 </html>
