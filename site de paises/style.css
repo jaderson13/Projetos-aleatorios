@@ -169,4 +169,37 @@ input:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+#pais_pagina{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+
+    padding:90px 10px 90px 20px;
+}
+
+#pais_pagina img{
+    width:700px;
+    height:400px;
+}
+
+#texto{
+    margin-left:140px;
+    line-height:30px;
+}
+
+#texto h2{
+    margin-bottom:30px;
+}
+
+#descricao{
+    display:flex;
+}
+
+#descricao article:last-of-type{
+    margin-left:90px;
+}
+
+
+
+
 
